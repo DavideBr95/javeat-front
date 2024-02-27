@@ -1,9 +1,15 @@
-import logo from './logo.svg';
+
 import './App.css';
+import { BrowserRouter, Routes } from 'react-router-dom';
+import  Navbar  from './navbar/Navbar'
+
 
 function App() {
   return (
-    <h1>8======D</h1>
+    <BrowserRouter>
+    <Navbar/>
+    <Routes></Routes>
+    </BrowserRouter>
   );
 }
 
