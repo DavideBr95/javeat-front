@@ -3,7 +3,9 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './navbar/Navbar';
 import HomePage from './pages/HomePage';
 import RestaurantPage from './pages/RestaurantPage';
-import ProfilePage from './pages/ProfilePage';
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
+
 
 function App() {
   return (
@@ -12,7 +14,10 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/restaurants" element={<RestaurantPage />} />
-        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+
+
       </Routes>
     </BrowserRouter>
   );
