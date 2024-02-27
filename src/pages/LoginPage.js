@@ -30,7 +30,10 @@ function LoginPage() {
   }
 
   return (
-    <div>
+    <>
+    <div className="container mt-3" data-bs-theme="dark">
+    <div class="card border-dark" >
+  <div class="card-body text-center">
       <form onSubmit={userLogin}>
         <div className="mb-3">
           <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
@@ -54,9 +57,12 @@ function LoginPage() {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <button type="submit" className="btn btn-primary">Submit</button>
+        <button type="submit" className="btn btn-warning">Submit</button>
       </form>
     </div>
+    </div>
+    </div>
+</>
   );
 }
 

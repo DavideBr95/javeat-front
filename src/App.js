@@ -4,14 +4,22 @@ import Navbar from './navbar/Navbar';
 import HomePage from './pages/HomePage';
 import RestaurantPage from './pages/RestaurantPage';
 import LoginPage from './pages/LoginPage';
+<<<<<<< Updated upstream
 import RegisterPage from './pages/RegisterPage'; 
 import CheckoutPage from './pages/CheckoutPage'; 
 import OrderConfirmationPage from './pages/OrderConfirmationPage'; 
 import AllRestaurantsPage from './pages/AllRestaurantsPage'; 
+=======
+import RegisterPage from './pages/RegisterPage';
+import background from "./background/baldurs-food.jpg";
+>>>>>>> Stashed changes
 
 
 function App() {
   return (
+    <div style={{ 
+      backgroundImage: `url(${background})`, width: "100%", height: "100vh", backgroundSize: "cover"
+    }}>
     <BrowserRouter>
       <Navbar/>
       <Routes>
@@ -26,6 +34,7 @@ function App() {
 
       </Routes>
     </BrowserRouter>
+    </div>
   );
 }
 
