@@ -3,7 +3,7 @@ import React from 'react';
 function AllRestaurantsPage() {
   return (
     <div className='container mt-3'>
-     <table class="table table-hover" data-bs-theme="dark">
+     <table className="table table-hover" data-bs-theme="dark">
   <thead>
     <tr>
       <th scope="col">#</th>

@@ -5,9 +5,22 @@ import HomePage from './pages/HomePage';
 import RestaurantPage from './pages/DetailsRestaurantPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage'; 
+import { atom, useAtom } from 'jotai';
+
 
 import AllRestaurantsPage from './pages/AllRestaurantsPage'; 
 import background from "./background/output-onlinepngtools.png";
+
+const loggedUserBase = atom(localStorage.getItem("logged") ?JSON.parse(localStorage.getItem("logged")):null);
+
+export const loggedUser = atom(
+  (get) => get(loggedUserBase),
+  (get,set,newLogged) =>
+  {
+      set(loggedUserBase,newLogged);
+      localStorage.setItem("logged",JSON.stringify(newLogged));
+  }
+);
 
 
 function App() {

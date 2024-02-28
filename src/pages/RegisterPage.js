@@ -6,12 +6,12 @@ import { useNavigate } from 'react-router-dom';
 
 export default function RegisterPage() {
     const [user, setUser] = useState();
-    // const [mail, setMail] = useState([]);
-    // const [password, setPassword] = useState([]);
-    // States for registration
     const [phone, setPhone] = useState("");
     const [mail, setMail] = useState("");
     const [password, setPassword] = useState("");
+    const [positionx, setPositionX] = useState(0);
+    const [positiony, setPositionY] = useState(0);
+
     const navigate = useNavigate();
 
  
@@ -36,13 +36,24 @@ export default function RegisterPage() {
         setPassword(e.target.value);
         setSubmitted(false);
     };
+
+    const handlePositionY = (e) => {
+        setPositionY(e.target.value);
+        setSubmitted(false);
+    };
+
+    const handlePositionX = (e) => {
+        setPositionX(e.target.value);
+        setSubmitted(false);
+    };
  
     // Handling the form submission
   
     const handleSubmit = async (e) => {
     e.preventDefault();
-    if (mail === "" || password === "") {
-        setError(true);
+    if (mail === "" || password === "") 
+     {
+        setError(false);
     } else {
         try {
             const response = await axios.post('/users/register', {
@@ -52,16 +63,16 @@ export default function RegisterPage() {
             });
           
             if (response.data && response.status === 200) {
-                setUser(response.data) // Se necessario aggiornare lo stato dell'utente
-                localStorage.setItem("logged", JSON.stringify(response.data))
+                setUser(response.data); // Se necessario aggiornare lo stato dell'utente
+                localStorage.setItem("logged", JSON.stringify(response.data));
+                setSubmitted(true);
+                setError(false); 
                 navigate("/");
-                // setSubmitted(true);
-                // setError(false);
-              }
+            }
            
         } catch (error) {
            
-            console.error(error);
+           
             setError(true);
         }
     }
@@ -99,23 +110,23 @@ export default function RegisterPage() {
   return (   
     <>
   <div className="container mt-3" data-bs-theme="dark">
-    <div class="card border-dark" >
-      <div class="card-body text-center">
+    <div className="card border-dark" >
+      <div className="card-body text-center">
         <div>
           <h2>Register</h2>
         </div>
       
-        {/* Calling to the methods */}
+       
         <div className="messages">
             {errorMessage()}
             {successMessage()}
         </div>
         <form>
 
-          {/* <form onSubmit={userLogin}> */}
+      
           <div className="input-group mb-3">
           
-          <span class="input-group-text" id="inputGroup-sizing-default">Mail</span>
+          <span className="input-group-text" id="inputGroup-sizing-default">E-mail</span>
                   <input
                       onChange={handleMail}
                       className="form-control"
@@ -124,7 +135,7 @@ export default function RegisterPage() {
                   />
           </div>
           <div className="input-group mb-3">
-          <span class="input-group-text" id="inputGroup-sizing-default">Password</span>
+          <span className="input-group-text" id="inputGroup-sizing-default">Password</span>
                   <input
                       onChange={handlePassword}
                       className="form-control"
@@ -133,12 +144,35 @@ export default function RegisterPage() {
                   />
           </div>
           <div className="input-group mb-3">
-          {/* Labels and inputs for form data */}
-          <span class="input-group-text" id="inputGroup-sizing-default">Phone</span>
+      
+          <span className="input-group-text" id="inputGroup-sizing-default">Phone</span>
               <input
                   onChange={handlePhone}
                   className="form-control"
                   value={phone}
+                  type="text"
+              />
+            
+          </div>
+
+          <div className="input-group mb-3">
+         
+          <span className="input-group-text" id="inputGroup-sizing-default">Position X</span>
+              <input
+                  onChange={handlePositionX}
+                  className="form-control"
+                  value={positionx}
+                  type="number"
+              />
+            
+          </div>
+          <div className="input-group mb-3">
+          
+          <span className="input-group-text" id="inputGroup-sizing-default">Position Y</span>
+              <input
+                  onChange={handlePositionY}
+                  className="form-control"
+                  value={positiony}
                   type="number"
               />
             

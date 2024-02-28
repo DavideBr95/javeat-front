@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { useAtom } from 'jotai';
+import { loggedUser } from '../App';
 
 function LoginPage() {
-  const [user, setUser] = useState();
+  const [user, setUser] = useAtom(loggedUser);
   const [mail, setMail] = useState([]);
   const [password, setPassword] = useState([]);
   const navigate = useNavigate();
@@ -20,8 +22,7 @@ function LoginPage() {
       .then(response => {
         if (response.data && response.status === 200) {
           setUser(response.data) // Se necessario aggiornare lo stato dell'utente
-          localStorage.setItem("logged", JSON.stringify(response.data))
-          navigate("/");
+           navigate("/");
         }
       })
       .catch(error => {
@@ -33,14 +34,14 @@ function LoginPage() {
   return (
     <>
   <div className="container mt-3" data-bs-theme="dark">
-  <div class="card border-dark" >
-  <div class="card-body text-center mb.2">
+  <div className="card border-dark" >
+  <div className="card-body text-center mb.2">
   <div>
         <h2>Login</h2>
   </div>
       <form onSubmit={userLogin}>
-        <div className="mb-3">
-          <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
+        <div className=" input-group mb-3">
+          <span htmlFor="exampleInputEmail1" className="input-group-text">Email address</span>
           <input 
             type="email" 
             className="form-control" 
@@ -49,10 +50,10 @@ function LoginPage() {
             value={mail}
             onChange={(e) => setMail(e.target.value)}
           />
-          <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
+        
         </div>
-        <div className="mb-3">
-          <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
+        <div className=" input-group mb-3">
+          <span htmlFor="exampleInputPassword1" className="input-group-text">Password</span>
           <input 
             type="password" 
             className="form-control" 
