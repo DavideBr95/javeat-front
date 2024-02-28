@@ -1,11 +1,14 @@
 import { useState } from "react";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { loggedUser } from "../App";
+import { useAtom } from 'jotai';
+
 
 
 
 export default function RegisterPage() {
-    const [user, setUser] = useState();
+    const [user, setUser] = useAtom(loggedUser);
     const [phone, setPhone] = useState("");
     const [mail, setMail] = useState("");
     const [password, setPassword] = useState("");
@@ -49,26 +52,31 @@ export default function RegisterPage() {
  
     // Handling the form submission
   
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
     e.preventDefault();
     if (mail === "" || password === "") 
      {
-        setError(false);
+        setError(true);
     } else {
         try {
-            const response = await axios.post('/users/register', {
+            axios.post('/users/register', {
                 mail,
                 password,
-                phone
-            });
-          
-            if (response.data && response.status === 200) {
-                setUser(response.data); // Se necessario aggiornare lo stato dell'utente
-                localStorage.setItem("logged", JSON.stringify(response.data));
-                setSubmitted(true);
-                setError(false); 
-                navigate("/");
+                phone,
+                positionx,
+                positiony
+            }).then((response)=>{
+                if (response.data && response.status === 201) {
+                    setUser(response.data); // Se necessario aggiornare lo stato dell'utente
+                   
+                    setSubmitted(true);
+                    setError(false); 
+                    navigate("/");
+                }
             }
+            ) ;
+          
+           
            
         } catch (error) {
            
@@ -121,7 +129,7 @@ export default function RegisterPage() {
             {errorMessage()}
             {successMessage()}
         </div>
-        <form>
+        <form onSubmit={handleSubmit}>
 
       
           <div className="input-group mb-3">
@@ -177,7 +185,7 @@ export default function RegisterPage() {
               />
             
           </div>
-          <button onClick={handleSubmit} className="btn btn-warning" type="submit">
+          <button  className="btn btn-warning" type="submit">
               Submit
           </button>
         </form>
