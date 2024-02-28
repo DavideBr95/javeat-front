@@ -6,6 +6,7 @@ import RestaurantPage from './pages/DetailsRestaurantPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage'; 
 import { atom, useAtom } from 'jotai';
+import DetailsRestaurantPage from './pages/DetailsRestaurantPage';
 
 
 import AllRestaurantsPage from './pages/AllRestaurantsPage'; 
@@ -36,7 +37,8 @@ function App() {
         <Route path="/users/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/all-restaurants" element={<AllRestaurantsPage />} />
-    
+        <Route path="/restaurant/:id" element={<DetailsRestaurantPage />} />
+
 
       </Routes>
     </BrowserRouter>
