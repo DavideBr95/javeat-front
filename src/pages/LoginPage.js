@@ -3,8 +3,9 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 function LoginPage() {
-  const [mail, setMail] = useState('');
-  const [password, setPassword] = useState('');
+  const [user, setUser] = useState();
+  const [mail, setMail] = useState([]);
+  const [password, setPassword] = useState([]);
   const navigate = useNavigate();
 
   function userLogin(e) {
@@ -15,10 +16,10 @@ function LoginPage() {
       "password": password
     };
 
-    axios.post("/login", userLogin)
+    axios.post("/users/login", userLogin)
       .then(response => {
         if (response.data && response.status === 200) {
-          // setUser(response.data) // Se necessario aggiornare lo stato dell'utente
+          setUser(response.data) // Se necessario aggiornare lo stato dell'utente
           localStorage.setItem("logged", JSON.stringify(response.data))
           navigate("/");
         }
@@ -31,9 +32,12 @@ function LoginPage() {
 
   return (
     <>
-    <div className="container mt-3" data-bs-theme="dark">
-    <div class="card border-dark" >
-  <div class="card-body text-center">
+  <div className="container mt-3" data-bs-theme="dark">
+  <div class="card border-dark" >
+  <div class="card-body text-center mb.2">
+  <div>
+        <h2>Login</h2>
+  </div>
       <form onSubmit={userLogin}>
         <div className="mb-3">
           <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
