@@ -3,10 +3,10 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { atom, useAtom } from 'jotai';
 import { currentUser } from '../App';
-import DetailsRestaurantPage from './DetailsRestaurantPage';
+import AllRestaurantPage from './AllRestaurantPage';
 
 
-function AllRestaurantsPage() {
+export default function FilterRestaurantsPage() {
   const [restaurants, setRestaurants] = useState([]);
   const [user, setUser] = useAtom(currentUser);
 
@@ -85,7 +85,7 @@ function AllRestaurantsPage() {
       
       <div >
       
-      {filtered.map(f => <DetailsRestaurantPage {...f} />)}
+      {filtered.map(f => <AllRestaurantPage {...f} />)}
         
       </div>
     </div>
@@ -94,4 +94,3 @@ function AllRestaurantsPage() {
   );
 }
 
-export default AllRestaurantsPage;

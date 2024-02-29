@@ -2,12 +2,12 @@ import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './navbar/Navbar';
 import HomePage from './pages/HomePage';
-import RestaurantPage from './pages/DetailsRestaurantPage';
+import RestaurantPage from './pages/AllRestaurantPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage'; 
 import { atom, useAtom } from 'jotai';
-import DetailsRestaurantPage from './pages/DetailsRestaurantPage';
-import AllRestaurantsPage from './pages/AllRestaurantsPage'; 
+import DetailsRestaurantPage from './pages/AllRestaurantPage';
+import AllRestaurantsPage from './pages/FilterRestaurantsPage'; 
 import background from "./background/output-onlinepngtools.png";
 
 const loggedUserBase = atom(localStorage.getItem("logged") ?JSON.parse(localStorage.getItem("logged")):null);

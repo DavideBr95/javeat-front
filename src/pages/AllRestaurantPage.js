@@ -4,7 +4,7 @@ import imageRestaurant from "../background/baldurs-gate-3-elfsong-room-barkeep.a
 
 
 
-export default function DetailsRestaurantPage(props) {
+export default function AllRestaurantPage(props) {
     function Card({ name, phone, opening , closing, x, y}) 
     {
         return (
