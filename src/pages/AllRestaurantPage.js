@@ -4,54 +4,33 @@ import imageRestaurant from "../background/baldurs-gate-3-elfsong-room-barkeep.a
 
 
 
-export default function AllRestaurantPage(props) {
-    function Card({ name, phone, opening , closing, x, y}) 
-    {
-        return (
+export default function AllRestaurantPage(restaurant) {
+
+return(
 <>
-            <div class="card" data-bs-theme="dark" >
-                <img class="card-img-top" alt=""/>
-                <div class="card-body">
-                    <h5 class="card-title">Restaurant {name}</h5>
-                    <p class="card-text">Our Phone: {phone}</p>
-                </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">{opening}/{closing}:</li>
-                    <li class="list-group-item">({x},{y})</li>
-                   
-                </ul>
-              
-            </div>
-</>
-        );
-    }
-
-    
-    return(
-        <>
-
-<div class="card mt-3 border border-white" data-bs-theme="dark" style={{width: "80%", margin: "0  auto"}}>
-  <div class="row g-0">
-    <div class="col-md-4">
-      <div style={{ backgroundImage: `url(${imageRestaurant})`, height: "15rem", backgroundSize: "cover", 
-                    }} class="img-fluid rounded-start" alt="..."/>
-    </div>
-    <div class="col-md-8">
-      <div class="card-body ">
-        {/* <p>Restaurant id: {props.id}</p>  */}
-        
-        <h5 class="card-title">  {props.name}</h5>
-        
-        {/* <p>Distance {props.positionX},{props.positionY}</p> */}
-        <p class="card-text"><small class="text-body-secondary"><small><button class="btn btn-warning" type="button"><Link class="nav-link" to={"/RestaurantDetail/"+props.id}>Details</Link></button></small></small></p>
+  <div className="card mt-3 border-dark" data-bs-theme="dark" style={{width: "80%", margin: "0  auto"}}>
+    <div className="row g-0">
+      <div className="col-md-4">
+        <div style={{ backgroundImage: `url(${imageRestaurant})`, height: "15rem", backgroundSize: "cover", 
+                      }} className="img-fluid rounded-start" alt="..."/>
+      </div>
+      <div className="col-md-8">
+        <div className="card-body ">
+          {/* <p>Restaurant id: {props.id}</p>  */}
+          
+          <h5 className="card-title">  {restaurant.name}</h5>
+          
+          <p>Distance: {restaurant.positionX},{restaurant.positionY}</p>
+          <p>Food type: {restaurant.foodTypes}</p>
+          <p className="card-text text-body-secondary">
+            <button className="btn btn-warning" type="button">
+              <Link className="nav-link" to={"/restaurant/"+restaurant.id}>Details</Link></button></p>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-
-            
-        </>
-    );
+  </div>           
+</>
+);
 }
 
 

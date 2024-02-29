@@ -26,7 +26,7 @@ export default function FilterRestaurantsPage() {
   }, []);
 
   const searchType = useRef(null);
-  const searchDistance = useRef(null);
+  const searchDist = useRef(null);
 
   function calcDist(restaurant, maxDistance)
   {
@@ -51,43 +51,39 @@ export default function FilterRestaurantsPage() {
   function startSearch()
   {
     let keyFood = searchType.current.value;
-    let maxDistance = searchDistance.current.value;
+    let maxDistance = searchDist.current.value;
 
     setTheFilter(restaurants.filter(r => r.foodTypes.filter(f => f == keyFood) || calcDist(r, maxDistance)))
   }
 
-  function searchDi()
+  function searchDis()
   {
-    let maxDistance = searchDistance.current.value;
+    let maxDistance = searchDist.current.value;
 
     setTheFilter(restaurants.filter(r => calcDist(r, maxDistance)))
   }
 
   return (
     <>
+
+    
     <div className="container">
 
-      <div class="card mt-3 border border-white" data-bs-theme="dark" style={{width: "80%", margin: "0  auto"}} >
+      <div class="card mt-3 border-dark" data-bs-theme="dark" style={{width: "80%", margin: "0  auto"}} >
         <ul class="list-group list-group-flush">
           <li class="list-group-item">Tipo: <input name="type" ref={searchType} type="text"placeholder="Type"/></li>
-          <li class="list-group-item">Distanza massima:<input type="number" ref={searchDistance} />  </li>
-        
-        </ul>
-      </div>
-      
-        {/* <div className="card mt-3">  
-        {
-          user ? <button class="btn btn-warning" onClick={searchDi}> Search </button> :
-          <div> You need to log in first</div>
-        }
-        </div> */}
-      
-      
-      <div >
-      
-      {filtered.map(f => <AllRestaurantPage {...f} />)}
+          <li class="list-group-item">Distanza massima:<input type="number" ref={searchDist} />  </li>
+        <li class="list-group-item"><button class="btn btn-warning" onClick={startSearch}> Search </button></li>
+        </ul> 
         
       </div>
+      
+      
+          {filtered.map(f => <AllRestaurantPage {...f} />)}
+      
+      
+        
+    
     </div>
       
     </>
