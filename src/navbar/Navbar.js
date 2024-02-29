@@ -33,7 +33,7 @@ export default function Navbar() {
                     !user    
                     ? 
                     <>
-                        <Link className="btn btn-outline-light" to="/users/login">Login</Link> 
+                        <Link className="btn btn-outline-light me-3" to="/users/login">Login</Link> 
                         <Link className="btn btn-outline-light" to="/register">Register</Link>
                     </>
                     :
