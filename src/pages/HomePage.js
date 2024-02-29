@@ -7,7 +7,7 @@ function HomePage() {
   return (
    <>
   <div className="container mt-3"  data-bs-theme="dark">
-  <div className="card text-center">
+  <div className="card text-center border border-white">
   <div className="card-header">
   {/* <img src="..." className="img-fluid" alt="..."/> */}
   </div>

@@ -1,47 +1,96 @@
-import React, { useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { atom, useAtom } from 'jotai';
+import { currentUser } from '../App';
+import DetailsRestaurantPage from './DetailsRestaurantPage';
+
 
 function AllRestaurantsPage() {
   const [restaurants, setRestaurants] = useState([]);
+  const [user, setUser] = useAtom(currentUser);
+
+ 
+  const [filtered, setTheFilter] = useState([]);
+  const [filter, setFilter] = useState({ foodType: "", maxDistance: 1000 });
 
   useEffect(() => {
-    // Effettua la chiamata API al caricamento del componente
-    const fetchRestaurants = async () => {
-      try {
-        
-        const response = await axios.get('http://localhost:3000/restaurants');
-        setRestaurants(response.data); // Imposta i ristoranti con i dati ricevuti
-      } catch (error) {
-        console.error("Errore durante il recupero dei ristoranti:", error);
-      }
-    };
+    axios.get("/restaurants")
+      .then((response) => {
+        setRestaurants(response.data);
+        setTheFilter(response.data);
+      })
+      .catch((error) => {
+        console.error("Errore durante il recupero dei dati dei ristoranti:", error);
+      });
+  }, []);
 
-    fetchRestaurants();
-  }, []); // L'array vuoto assicura che l'effetto venga eseguito solo una volta
+  const searchType = useRef(null);
+  const searchDistance = useRef(null);
+
+  function calcDist(restaurant, maxDistance)
+  {
+    if(maxDistance == "")
+      return true;
+
+    let userX = user.positionX;
+    let userY = user.positionY;
+    let ourX = Math.abs(userX - restaurant.positionX); 
+    let ourY = Math.abs(userY - restaurant.positionY);
+
+    ourX *= ourX;
+    ourY *= ourY;
+
+    let location = Math.sqrt(ourX + ourY);
+    if(location < maxDistance)
+      return true;
+    else
+      return false;
+  }
+
+  function startSearch()
+  {
+    let keyFood = searchType.current.value;
+    let maxDistance = searchDistance.current.value;
+
+    setTheFilter(restaurants.filter(r => r.foodTypes.filter(f => f == keyFood) || calcDist(r, maxDistance)))
+  }
+
+  function searchDi()
+  {
+    let maxDistance = searchDistance.current.value;
+
+    setTheFilter(restaurants.filter(r => calcDist(r, maxDistance)))
+  }
 
   return (
-    <div className='container mt-3'>
-      <table className="table table-hover">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Nome</th>
-            <th scope="col">Dettagli</th>
-          </tr>
-        </thead>
-        <tbody>
-          {restaurants.map((restaurant, index) => (
-            <tr key={restaurant.id}>
-              <th scope="row">{index + 1}</th>
-              <td>{restaurant.name}</td>
-              {/* Assumi che l'ID del ristorante venga utilizzato per costruire un URL ai dettagli del ristorante */}
-              <td><a href={`/restaurant/${restaurant.id}`}>Visualizza Dettagli</a></td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <>
+    <div className="container">
+
+      <div class="card mt-3 border border-white" data-bs-theme="dark" style={{width: "80%", margin: "0  auto"}} >
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Tipo: <input name="type" ref={searchType} type="text"placeholder="Type"/></li>
+          <li class="list-group-item">Distanza massima:<input type="number" ref={searchDistance} />  </li>
+        
+        </ul>
+      </div>
+      
+        {/* <div className="card mt-3">  
+        {
+          user ? <button class="btn btn-warning" onClick={searchDi}> Search </button> :
+          <div> You need to log in first</div>
+        }
+        </div> */}
+      
+      
+      <div >
+      
+      {filtered.map(f => <DetailsRestaurantPage {...f} />)}
+        
+      </div>
     </div>
+      
+    </>
   );
 }
 
