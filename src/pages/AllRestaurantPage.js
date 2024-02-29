@@ -1,15 +1,13 @@
-
 import { useAtom } from "jotai";
 import { loggedUser } from '../App';
-
-
-import React from 'react';
 import { Link } from "react-router-dom";
 import imageRestaurant from "../background/baldurs-gate-3-elfsong-room-barkeep.avif";
+import React from 'react';
+
 
 export default function AllRestaurantPage({ restaurant, user}) {
   const [userIn, setUser] = useAtom(loggedUser);
-
+ 
   // if (!user || typeof user.positionX === 'undefined' || typeof user.positionY === 'undefined') {
   //   return <div>User information not available</div>;
   // }
