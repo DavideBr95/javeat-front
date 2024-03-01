@@ -28,7 +28,7 @@ export default function DetailsRestaurant() {
   }, [id]);
   return (<>
 
-<div className="card mt-3">
+<div className="card mt-3" style={{margin: "0 auto", width: "80%"}}  >
   {/* <img src={restaurant.imgUrl} className="card-title" alt="immagine ristorante"/> */}
   <div className='d-flex '>
     <div className="card-body ">
@@ -47,11 +47,11 @@ export default function DetailsRestaurant() {
 
       <div class="CartContainer">
         <div class="Header">
-          <h3 class="Heading">Shopping Cart</h3>
+          <h3 class="Heading">Our menu</h3>
           <h5 class="Action">Remove all</h5>
         </div>
 
-        <div class="Cart-Items">
+        <div class="Cart-Items" >
             <div class="image-box">
             
             </div>
@@ -72,7 +72,7 @@ export default function DetailsRestaurant() {
             </div>
         </div>
 
-        <div class="Cart-Items pad">
+        <div class="Cart-Items">
             <div class="image-box">
           
             </div>
