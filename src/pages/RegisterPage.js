@@ -12,8 +12,8 @@ export default function RegisterPage() {
     const [phone, setPhone] = useState("");
     const [mail, setMail] = useState("");
     const [password, setPassword] = useState("");
-    const [positionx, setPositionX] = useState(0);
-    const [positiony, setPositionY] = useState(0);
+    const [positionX, setPositionX] = useState(0);
+    const [positionY, setPositionY] = useState(0);
 
     const navigate = useNavigate();
 
@@ -63,8 +63,8 @@ export default function RegisterPage() {
                 mail,
                 password,
                 phone,
-                positionx,
-                positiony
+                positionX,
+                positionY
             }).then((response)=>{
                 if (response.data && response.status === 201) {
                     setUser(response.data); // Se necessario aggiornare lo stato dell'utente
@@ -169,7 +169,7 @@ export default function RegisterPage() {
               <input
                   onChange={handlePositionX}
                   className="form-control"
-                  value={positionx}
+                  value={positionX}
                   type="number"
               />
             
@@ -180,7 +180,7 @@ export default function RegisterPage() {
               <input
                   onChange={handlePositionY}
                   className="form-control"
-                  value={positiony}
+                  value={positionY}
                   type="number"
               />
             
