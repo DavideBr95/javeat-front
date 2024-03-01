@@ -7,8 +7,8 @@ import RegisterPage from './pages/RegisterPage';
 import { atom } from 'jotai';
 import DetailsRestaurant from './pages/DetailsRestaurant';
 import AllRestaurantsPage from './pages/FilterRestaurantsPage'; 
-import background from "./background/desktop-wallpaper-restaurant-menu-menu.jpg";
-
+import background from "./background/home-slide-bg-2.jpg";
+// import "./style2.css";
 
 const loggedUserBase = atom(localStorage.getItem("logged") ?JSON.parse(localStorage.getItem("logged")):null);
 export const currentUser = atom();
@@ -27,9 +27,11 @@ export const loggedUser = atom(
 
 function App() {
   return (
-    <div style={{ 
-      backgroundImage: `url(${background})`, width: "100%", height: "100vh", backgroundSize: "cover", backgroundColor: "black"
-    }}>
+    <div  style={{ 
+      backgroundImage: `url(${background})`,
+      width: "100%",
+      height: "100vh",
+      backgroundSize: "cover"}}>
     
     <BrowserRouter>
       <Navbar/>

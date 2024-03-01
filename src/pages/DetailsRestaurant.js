@@ -28,8 +28,8 @@ export default function DetailsRestaurant() {
   }, [id]);
   return (<>
 
-<div className="card mt-3 border-dark " data-bs-theme="dark" style={{ width: "70%", margin: "0 auto" }} >
-  <img src={restaurant.imgUrl} className="card-title" alt="immagine ristorante"/>
+<div className="card mt-3">
+  {/* <img src={restaurant.imgUrl} className="card-title" alt="immagine ristorante"/> */}
   <div className='container d-flex justify-content-around'>
     <div className="card-body ">
       <h5 className="card-title">{restaurant.name}</h5>
@@ -45,14 +45,13 @@ export default function DetailsRestaurant() {
 
     </div>
       <div className='card-body'>
-         <h5>MENU</h5>
         <div class="card">
+         <h5>MENU</h5>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item">An item <button type="button" class="btn-warning" ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
-  <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
-</svg></button></li>
-            <li class="list-group-item">A second item</li>
-            <li class="list-group-item">A third item</li>
+            <li ><p class="d-inline-flex gap-1">
+  <a href="#" class="btn" role="button" data-bs-toggle="button"/>+</p></li>
+            <li >A second item</li>
+            <li >A third item</li>
           </ul>
         </div>
       </div>

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { atom, useAtom } from 'jotai';
 import { currentUser } from '../App';
 import AllRestaurantPage from './AllRestaurantPage';
+import "../style/style.css"
 
 export default function FilterRestaurantsPage() {
   const [restaurants, setRestaurants] = useState([]);
@@ -47,22 +48,30 @@ export default function FilterRestaurantsPage() {
     ));
   }
 
-  return (
-    <div className="container">
-      <div className="card mt-3 border-dark" data-bs-theme="dark" style={{ width: "80%", margin: "0 auto" }}>
-        <ul className="list-group list-group-flush">
-          <li className="list-group-item">Tipo: <input name="type" ref={searchType} type="text" placeholder="Type" /></li>
-          <li className="list-group-item">Distanza massima: <input type="number" ref={searchDist} /></li>
-          <li className="list-group-item"><button className="btn btn-warning" onClick={startSearch}>Search</button></li>
-        </ul>
+return (
+<div className="container-filter d-flex" > 
+  <div className="card p-3" data-bs-theme="dark">
+    <form>
+      <div class="form-row">
+        <div class="form-group col-2 mt-3">
+          <label for="formGroupExampleInput">Tipo</label>
+          <input name="type" ref={searchType} type="text" />
+        </div>
+        <div class="form-group col-6  mt-3"  >
+          <label for="formGroupExampleInput2">Distanza massima: </label>
+          <input type="number" ref={searchDist} />
+        </div>
+        <button className="btn btn-warning  mt-3" onClick={startSearch}>Search</button>
       </div>
+    </form>
+  </div>
 
-      {filtered.map(restaurant => 
-        <AllRestaurantPage key={restaurant.id} restaurant={restaurant} user={user} />
-      )}
+  {filtered.map(restaurant => 
+    <AllRestaurantPage key={restaurant.id} restaurant={restaurant} user={user} />
+  )}
      
+</div>
 
-    </div>
   );
 }
 

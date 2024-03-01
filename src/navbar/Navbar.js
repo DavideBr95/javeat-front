@@ -1,10 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
-import { useState } from "react";
 import { useAtom } from "jotai";
 import { loggedUser } from '../App';
-
+import "../style/navbar_style.css"
 
 
 
@@ -24,7 +23,7 @@ export default function Navbar() {
     }
 
     return ( 
-        <nav className="navbar bg-body-tertiary bg-dark" data-bs-theme="dark">
+        <nav className="navbar navbar-dark bg-dark">
             <div className="container d-flex justify-content-around">
                 <Link className="navbar-brand" to="/all-restaurants"> Restaurants </Link>
                 <Link className="navbar-brand " to="/"><img className="" alt="Logo" src="/assets/favicon.png" style={{width:"50px", cursor:"pointer"}} /></Link>

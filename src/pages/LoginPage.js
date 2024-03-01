@@ -34,8 +34,8 @@ function LoginPage() {
   return (
     <>
   <div className="container mt-3" data-bs-theme="dark">
-  <div className="card border-dark" >
-  <div className="card-body text-center mb.2">
+  <div className="card border-dark " style={{background: "transparent", backdropFilter: "blur(10px)"}}>
+  <div className="card-body text-center mb-2">
   <div>
         <h2>Login</h2>
   </div>
