@@ -26,10 +26,9 @@ export default function AllRestaurantPage({ restaurant, user}) {
 
 return (
   <>
-  <div className="container">
     <div className="row">
-      <div className="col">
-          <div className="flip-card ">
+      <div className="p-2">
+          <div className="flip-card">
             <div class="flip-card-inner">
               <div class="flip-card-front ">
                 <div style={{ backgroundImage: `url(${imageRestaurant})`, height: "20rem", width: "20rem", backgroundSize: "cover", marginBottom: "10px" }}  alt="..." />
@@ -76,7 +75,6 @@ return (
           </div>
       </div>
     </div>
-  </div>
 
   </>
   );

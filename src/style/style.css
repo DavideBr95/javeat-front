@@ -58,18 +58,17 @@
 
 }
 
-.row {
-  margin-bottom: 50px;
-}
+
 
 .container-filter {
   margin-top: 5%;
   margin-left: 10%;
+  margin-right: 10%;
 }
 
 .card {
   width: 80%;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   background: transparent;
   backdrop-filter: blur(10px);
 }

@@ -49,7 +49,7 @@ export default function DetailsRestaurant() {
          <h5>MENU</h5>
           <ul class="list-group list-group-flush">
             <li ><p class="d-inline-flex gap-1">
-  <a href="#" class="btn" role="button" data-bs-toggle="button"/>+</p></li>
+            <a href="#" class="btn" role="button" data-bs-toggle="button"/>+</p></li>
             <li >A second item</li>
             <li >A third item</li>
           </ul>
