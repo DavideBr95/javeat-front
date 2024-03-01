@@ -63,8 +63,8 @@ export default function RegisterPage() {
                 mail,
                 password,
                 phone,
-                positionX: positionX,
-                positionY: positionY
+                positionX,
+                positionY
             }).then((response)=>{
                 if (response.data && response.status === 201) {
                     setUser(response.data); // Se necessario aggiornare lo stato dell'utente
