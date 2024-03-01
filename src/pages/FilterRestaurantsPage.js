@@ -31,31 +31,26 @@ export default function FilterRestaurantsPage() {
       });
   }, [reRender]);
 
-
   function handleFilter() {
+    const type = searchType.current.value;
+    const maxDistance = parseInt(searchDist.current.value);
+
     let filteredData = [...restaurants];
 
-    
-    if (filterType !== "Type") {
-      filteredData = filteredData.filter((restaurant) => restaurant.type === filterType);
+    if (type !== 'Type') {
+      filteredData = filteredData.filter((restaurant) => restaurant.foodTypes.includes(type));
+    }
+
+    if (!isNaN(maxDistance)) {
+      filteredData = filteredData.filter((restaurant) => restaurant.distance <= maxDistance);
+    }
+
+    setFilteredRestaurant(filteredData);
   }
 
-  const maxDistance = parseInt(searchDist.current.value); // Ottieni la distanza massima dalla input
-  if (!isNaN(maxDistance)) {
-    filteredData = filteredData.filter((restaurant) => calcDist(restaurant, maxDistance));
-  }
-
-  setFiltered(filteredData);
-  setFilteredRestaurant(filteredData);
-  }
-
-  function resetFilter() {
-    setFilterType("Type");
-    setFilteredRestaurant(restaurants);
-}
 
   function calcDist(restaurant, maxDistance) {
-    if (maxDistance === restaurant.maxdIS) 
+    if (maxDistance === restaurant.maxDistance) 
       return true;
 
     const userX = user.positionX;
@@ -67,55 +62,56 @@ export default function FilterRestaurantsPage() {
     return distance < maxDistance;
   }
 
-  // function startSearch() {
-  //   const keyFood = searchType.current.value;
-  //   const maxDistance = searchDist.current.value;
+  function startSearch() {
+    const keyFood = searchType.current.value;
+    const maxDistance = searchDist.current.value;
+    console.log(searchType.current.value);
 
-  //   setFiltered(restaurants.filter(r => 
-  //     r.foodTypes.includes(keyFood) && calcDist(r, maxDistance)
-  //   ));
-  // }
+    const filteredData = restaurants.filter(restaurant => 
+      restaurant.foodTypes.includes(keyFood) && calcDist(restaurant, maxDistance)
+    );
+
+    setFilteredRestaurant(filteredData);
+  }
 
 return (
   <>
     <div className="container" > 
       <div className="card p-3 " data-bs-theme="dark">
         <form>
-          <div class="form-row">
-            <div class="form-group col-2 mt-3">
+          <div className="form-row">
+            <div className="form-group col-2 mt-3">
             <select
                             className="form-select mt-4"
                             aria-label="Default select example"
                             onChange={(e) => setFilterType(e.target.value)}
                         >
                             <option value="Type">Type</option>
-                            <option value="italiano">italiano</option>
-                            <option value="giapponese">giapponese</option>
-                            <option value="messicano">messicano</option>
-                            <option value="indiano">indiano</option>
-                            <option value="mediterraneo">mediterraneo</option>
+                            <option value="Italiano">Italiano</option>
+                            <option value="Giapponese">Giapponese</option>
+                            <option value="Messicano">Messicano</option>
+                            <option value="Indiano">Indiano</option>
+                            <option value="Mediterraneo">Mediterraneo</option>
                            
                         </select>
             </div>
-          <div class="form-group col-6 mt-3">
+          <div className="form-group col-6 mt-3">
             <label for="formGroupExampleInput2">Distanza massima: </label>
             <input type="number" ref={searchDist} />
           </div>
-            <button className="btn btn-warning  mt-3" onClick={handleFilter}>Search</button>
-            <button className="btn btn-outline-danger mt-3" onClick={resetFilter}>Reset</button>
+            <button className="btn btn-warning  mt-3" onClick={startSearch}>Search</button>
+           {/* <button className="btn btn-outline-danger mt-3" onClick={resetFilter}>Reset</button> */}
 
           </div>
         </form>
       </div>
     </div>
     <div className="container-filter d-flex justify-content-around">
-
-      {filtered.map(restaurant => 
-      <AllRestaurantPage key={restaurant.id} restaurant={restaurant} user={user} />
-      )}
+        {restaurants.map(restaurant => 
+        <AllRestaurantPage key={restaurant.id} restaurant={restaurant} user={user} />
+        )}
     </div>
     
   </>
   );
 }
-

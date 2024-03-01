@@ -8,7 +8,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlassLocation } from '@fortawesome/free-solid-svg-icons';
 import { faPhone } from '@fortawesome/free-solid-svg-icons';
 import { faClock } from '@fortawesome/free-solid-svg-icons'; 
-
+import "../style/menu_style.css"
 
 
 export default function DetailsRestaurant() {
@@ -30,7 +30,7 @@ export default function DetailsRestaurant() {
 
 <div className="card mt-3">
   {/* <img src={restaurant.imgUrl} className="card-title" alt="immagine ristorante"/> */}
-  <div className='container d-flex justify-content-around'>
+  <div className='d-flex '>
     <div className="card-body ">
       <h5 className="card-title">{restaurant.name}</h5>
           <p className="card-text">
@@ -44,18 +44,67 @@ export default function DetailsRestaurant() {
           </p>
 
     </div>
-      <div className='card-body'>
-        <div class="card">
-         <h5>MENU</h5>
-          <ul class="list-group list-group-flush">
-            <li ><p class="d-inline-flex gap-1">
-            <a href="#" class="btn" role="button" data-bs-toggle="button"/>+</p></li>
-            <li >A second item</li>
-            <li >A third item</li>
-          </ul>
+
+      <div class="CartContainer">
+        <div class="Header">
+          <h3 class="Heading">Shopping Cart</h3>
+          <h5 class="Action">Remove all</h5>
         </div>
+
+        <div class="Cart-Items">
+            <div class="image-box">
+            
+            </div>
+            <div class="about">
+              <h5 class="title">...</h5>
+             
+              
+            </div>
+            <div class="counter">
+              <div class="btn">+</div>
+              <div class="count">...</div>
+              <div class="btn">-</div>
+            </div>
+            <div class="prices">
+              <div class="amount">...</div>
+              {/* <div class="save"><u>Save for later</u></div> */}
+              <div class="remove"><u>Remove</u></div>
+            </div>
+        </div>
+
+        <div class="Cart-Items pad">
+            <div class="image-box">
+          
+            </div>
+            <div class="about">
+              <h5 class="title">...</h5>
+              
+              
+            </div>
+            <div class="counter">
+              <div class="btn">+</div>
+              <div class="count">...</div>
+              <div class="btn">-</div>
+            </div>
+            <div class="prices">
+              <div class="amount">...</div>
+              {/* <div class="save"><u>Save for later</u></div> */}
+              <div class="remove"><u>Remove</u></div>
+            </div>
+        </div>
+      <hr/> 
+      <div class="checkout">
+      <div class="total">
+        <div>
+          <div class="Subtotal">Sub-Total</div>
+          <div class="items">...</div>
+        </div>
+        <div class="total-amount">...</div>
       </div>
-      </div>
+      <button class="button">Checkout</button></div>
+    </div>
+    </div>
+
 </div>
 
     </>

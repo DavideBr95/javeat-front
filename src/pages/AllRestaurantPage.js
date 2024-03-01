@@ -29,11 +29,11 @@ return (
     <div className="row">
       <div className="p-2">
           <div className="flip-card">
-            <div class="flip-card-inner">
-              <div class="flip-card-front ">
+            <div className="flip-card-inner">
+              <div className="flip-card-front ">
                 <div style={{ backgroundImage: `url(${imageRestaurant})`, height: "20rem", width: "20rem", backgroundSize: "cover", marginBottom: "10px" }}  alt="..." />
               </div>
-              <div class="flip-card-back">
+              <div className="flip-card-back">
                 <div className="card-body">
                   <h5 className="card-title">{restaurant.name}</h5>
                   <p>Food type: {restaurant.foodTypes}</p>

@@ -15,10 +15,10 @@ function HomePage() {
   return (
   <>
   <div className='container'>
-    <div class="card text-bg-dark mt-3"style={{width: "80%", margin: "0 auto"}}>
+    <div className="card text-bg-dark mt-3"style={{width: "80%", margin: "0 auto"}}>
       <img src={background} alt="immagine di benvenuto" /> 
-      <div class="card-img-overlay">
-        <div  class="text-end">
+      <div className="card-img-overlay">
+        <div  className="text-end">
                   {
                   userIn    
                   ?
