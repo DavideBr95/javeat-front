@@ -23,7 +23,7 @@ export default function Navbar() {
     }
 
     return ( 
-        <nav className="navbar navbar-dark bg-dark">
+        <nav className="navbar navbar-dark " style={{backgroundColor: "#000000ed"}}>
             <div className="container d-flex justify-content-around">
                 <Link className="navbar-brand" to="/all-restaurants"> Restaurants </Link>
                 <Link className="navbar-brand " to="/"><img className="" alt="Logo" src="/assets/favicon.png" style={{width:"50px", cursor:"pointer"}} /></Link>

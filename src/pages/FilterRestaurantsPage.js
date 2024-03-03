@@ -1,13 +1,20 @@
+import { useAtom } from "jotai";
+import { loggedUser } from '../App';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import AllRestaurantPage from './AllRestaurantPage';
+import RestaurantCard from './RestaurantCard';
 import "../style/style.css";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import { faTriangleExclamation } from '@fortawesome/free-solid-svg-icons';
 
 export default function FilterRestaurantsPage() {
   const [restaurants, setRestaurants] = useState([]);
   const [filterType, setFilterType] = useState("");
+  const [availableType, setAvailableType] = useState([]);
   const [filterDist, setFilterDist] = useState("");
-  const [user, setUser] = useState({ positionX: 500, positionY: 500 }); // Simula la posizione dell'utente
+  const [user, setUser] = useAtom(loggedUser); // utilizza la posizione dell'utente loggato
+  // const [user, setUser] = useState({ positionX: 500, positionY: 500 }); // Simula la posizione dell'utente
+
 
   useEffect(() => {
     axios.get("/restaurants")
@@ -24,15 +31,19 @@ export default function FilterRestaurantsPage() {
       .catch(error => console.error("Errore nel recupero dei ristoranti:", error));
   }, [user]); // Aggiungi user alle dipendenze se la sua posizione può cambiare
 
+  function getAvailableType(){
+
+  }
+
   function calculateDistance(x1, y1, x2, y2) {
     const deltaX = x1 - x2;
     const deltaY = y1 - y2;
-    return Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+    return Math.round(Math.sqrt(deltaX * deltaX + deltaY * deltaY));
   }
   function filteredRestaurants() {
     return restaurants.filter(restaurant => {
       // Verifica se almeno uno dei tipi di cibo nel filtro è presente nell'array foodTypes del ristorante
-      const typeMatch = filterType ? restaurant.foodTypes.some(foodType => foodType.toLowerCase().includes(filterType.toLowerCase())) : true;
+      const typeMatch = filterType ? restaurant.foodTypes.some(foodType => foodType.includes(filterType)) : true;
       const distMatch = filterDist ? restaurant.distance <= filterDist : true;
       return typeMatch && distMatch;
     });
@@ -48,15 +59,16 @@ export default function FilterRestaurantsPage() {
                 <select
                   className="form-select mt-4"
                   aria-label="Default select example"
-                  value={filterType}
                   onChange={(e) => setFilterType(e.target.value)}
-                >
+                  value={filterType}
+                > 
+                  <option value="">Select a type</option>
                   <option value="Italian">Italian</option>
                   <option value="Pizza">Pizza</option>
                   <option value="Pasta">Pasta</option>
                   <option value="Japanese">Japanese</option>
                   <option value="Sushi">Sushi</option>
-                  <option value="Ramen">Ramen</option>
+                  <option value="Ramen" >Ramen</option>
                   <option value="Mexican">Mexican</option>
                   <option value="Tacos">Tacos</option>
                   <option value="Burritos">Burritos</option>
@@ -83,13 +95,21 @@ export default function FilterRestaurantsPage() {
         </div>
       </div>
       <div className="container-filter d-flex justify-content-around flex-wrap">
-        {filteredRestaurants().length > 0 ? (
-          filteredRestaurants().map(restaurant => (
-            <AllRestaurantPage key={restaurant.id} restaurant={restaurant} />
-          ))
-        ) : (
-          <p>No restaurants found with the selected filters.</p>
-        )}
+        <div className='row w-100 gy-3 gx-2'> 
+          {filteredRestaurants().length > 0 ? (
+            filteredRestaurants().map(restaurant => (
+              <RestaurantCard key={restaurant.id} restaurant={restaurant}/>
+            ))
+          ) : (
+            <div class="alert alert-warning" role="alert">
+              <FontAwesomeIcon icon={faTriangleExclamation} /> No restaurants found with the selected filters.
+            </div>
+
+          
+          )}
+
+
+        </div>
       </div>
     </>
   );

@@ -6,7 +6,7 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage'; 
 import { atom } from 'jotai';
 import DetailsRestaurant from './pages/DetailsRestaurant';
-import AllRestaurantsPage from './pages/FilterRestaurantsPage'; 
+import RestaurantCard from './pages/FilterRestaurantsPage'; 
 import background from "./background/home-slide-bg-2.jpg";
 // import "./style2.css";
 
@@ -30,7 +30,8 @@ function App() {
     <div  style={{ 
       backgroundImage: `url(${background})`,
       width: "100%",
-      height: "100vh",
+      height: "100%",
+      minHeight: "100vh",
       backgroundSize: "cover"}}>
     
     <BrowserRouter>
@@ -39,7 +40,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/users/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
-        <Route path="/all-restaurants" element={<AllRestaurantsPage />} />
+        <Route path="/all-restaurants" element={<RestaurantCard />} />
         <Route path="/restaurants/:id" element={<DetailsRestaurant />} />
         {/* <Route path="/restaurant/:id" element={<FilterRestaurantsPage />} /> */}
         {/* <Route path="/restaurant/:id" element={<AddDelivery />} /> */}

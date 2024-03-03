@@ -6,8 +6,8 @@
 
 .flip-card {
     /* background-color: transparent; */
-    width: 300px;
-    height: 200px;
+    width: 100%;
+    height: 300px;
     perspective: 1000px; /* Remove this if you don't want the 3D effect */
     border-width: 0px;
 
@@ -30,7 +30,7 @@
   
   /* Position the front and back side */
   .flip-card-front, .flip-card-back {
-    background-color: #07070731;
+    background-color: #000000ed;
     color: rgb(255, 255, 255);
     position: absolute;
     width: 100%;
@@ -66,9 +66,11 @@
   margin-right: 10%;
 }
 
-/* .card {
-  width: 80%;
+.card {
+  /* width: 80%;
   margin: 0 auto;
   background: transparent;
-  backdrop-filter: blur(10px);
-} */
+  backdrop-filter: blur(10px); */
+  background-color: #000000ed;
+  border: none !important;
+}
