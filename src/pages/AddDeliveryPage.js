@@ -14,6 +14,14 @@ export default function AddDeliveryPage(){
     function handleConfirmation() {
         navigate('/confirmed');
       }
+
+       const handleSelectChange = (event) => {
+        event.preventDefault();
+        const selectedValue = event.target.value;
+        const note = document.getElementById("note").value;
+        navigate(`/confirmed?deliveryTime=${selectedValue}&note=${note}`);
+      };
+
     return(<>
         <div className="slide-container">
   
@@ -40,24 +48,25 @@ export default function AddDeliveryPage(){
 
 
     <div className="clash-card__unit-stats clash-card__unit-stats--barbarian clearfix">
+        <div className="one-half no-border">
+          <div className="stat">Note</div>
+          <div className="input-group">
+          <textarea id="note" className="form-control m-3" placeholder='Please tell us about any preferences and/or allergies'></textarea>
+        </div>
+      </div>
     <div className="one-half">
         <div className="stat">Delivery time</div>
         <div className="stat-value m-3">
-            <select class="form-select" aria-label="Default select example">
+            <select class="form-select" aria-label="Default select example" onChange={handleSelectChange}>
                 <option selected>Select the preferred delivery time</option>
-                <option value="1">10:15-10:30</option>
-                <option value="2">10:45-11:00</option>
-                <option value="3">11:15-11:30</option>
+                <option value="10:15-10:30">10:15-10:30</option>
+                <option value="10:45-11:00">10:45-11:00</option>
+                <option value="11:15-11:30">11:15-11:30</option>
             </select>
         </div>
         </div>
 
-      <div className="one-half no-border">
-        <div className="stat">Note</div>
-        <div className="input-group">
-        <textarea className="form-control m-3" placeholder='Please tell us about any preferences and/or allergies'></textarea>
-        </div>
-      </div>
+  
      
        
         <button className="btn btn-light mb-3" onClick={handleConfirmation}>CONFIRM</button>
