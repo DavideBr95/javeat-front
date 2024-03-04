@@ -5,10 +5,11 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashCan } from '@fortawesome/free-solid-svg-icons'; 
 import { faMagnifyingGlassLocation, faPhone, faClock } from '@fortawesome/free-solid-svg-icons';
 import "../style/menu_style.css";
-import { Link } from 'react-router-dom';
 
+export const subTotalGlobal = atom(0);
 
 export default function DetailsRestaurant() {
   const [restaurant, setRestaurants] = useState({});
@@ -17,6 +18,7 @@ export default function DetailsRestaurant() {
   const [counts, setCounts] = useState({});
   const [prices, setPrices] = useState({});
   const [subtotal, setSubtotal] = useState(0);
+  const [globalSubTotal, setGlobalSubTotal] = useAtom(subTotalGlobal);
   const navigate = useNavigate();
 
   let { id } = useParams();
@@ -82,7 +84,10 @@ export default function DetailsRestaurant() {
       subTotal += counts[id] * prices[id];
     });
     setSubtotal(subTotal);
-  }, [counts, prices]);
+    setGlobalSubTotal(subTotal);
+  }, [counts, prices, subTotalGlobal]);
+
+  
 
   return (
     <>
@@ -103,7 +108,7 @@ export default function DetailsRestaurant() {
           <div class="CartContainer">
             <div class="Header">
               <h2 class="Heading">Our menu</h2>
-              <button className="btn btn-danger mt-2" onClick={removeAll}>Remove all</button>
+              <button className="btn btn-danger mt-2" onClick={removeAll}><FontAwesomeIcon icon={faTrashCan} /></button>
             </div>
             {dishes.map(dish =>
               <div class="Cart-Items" key={dish.id}>
@@ -127,7 +132,7 @@ export default function DetailsRestaurant() {
                 </div>
                 <div class="total-amount">{subtotal} €</div>
               </div>
-              <button className="button" onClick={handleCheckout}>BUY</button>
+              <button className="btn btn-warning" onClick={handleCheckout} style={{width: "100%", marginBottom: "10px"}}>BUY</button>
               </div>
 
           </div>

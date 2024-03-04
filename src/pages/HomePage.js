@@ -1,10 +1,14 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
-import background from "../background/home.jpg";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import { faArrowTurnUp } from '@fortawesome/free-solid-svg-icons'; 
 import { useAtom } from "jotai";
 import { loggedUser } from '../App';
+import background from "../background/home.jpg";
+import map from "../background/map with dots.jpg";
+
+   
+
 
 
 
@@ -14,8 +18,8 @@ function HomePage() {
 
   return (
   <>
-  <div className='container'>
-    <div className="card text-bg-dark mt-3"style={{width: "80%", margin: "0 auto"}}>
+  <div className='container d-flex justify-content-evenly'>
+    <div className="card text-bg-dark " >
       <img src={background} alt="immagine di benvenuto" /> 
       <div className="card-img-overlay">
         <div  className="text-end">
@@ -35,6 +39,8 @@ function HomePage() {
                   </div>
     
       </div>
+      <img src={map} alt="immagine di benvenuto" /> 
+
     </div>
 
 </div>

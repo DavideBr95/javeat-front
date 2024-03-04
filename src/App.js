@@ -9,7 +9,8 @@ import DetailsRestaurant from './pages/DetailsRestaurant';
 import RestaurantCard from './pages/FilterRestaurantsPage'; 
 import background from "./background/home-slide-bg-2.jpg";
 import AddDeliveryPage from './pages/AddDeliveryPage'; 
-import gsap from 'gsap';
+import ConfirmationPage from './pages/ConfirmationPage'; 
+
 
 
 // import "./style2.css";
@@ -27,6 +28,7 @@ export const loggedUser = atom(
       localStorage.setItem("logged",JSON.stringify(newLogged));
   }
 );
+
 
 
 function App() {
@@ -47,10 +49,7 @@ function App() {
         <Route path="/all-restaurants" element={<RestaurantCard />} />
         <Route path="/restaurants/:id" element={<DetailsRestaurant />} />
         <Route path="/add-delivery" element={<AddDeliveryPage />} />
-
-
-
-
+        <Route path="/confirmed" element={<ConfirmationPage />} />
       </Routes>
     </BrowserRouter>
     </div>

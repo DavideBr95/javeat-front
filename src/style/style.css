@@ -38,6 +38,7 @@
     -webkit-backface-visibility: hidden; /* Safari */
     backface-visibility: hidden;
     border-width: 0px;
+    border-radius: 14px;
     
   }
   
@@ -51,6 +52,8 @@
   .flip-card-back {
     transform: rotateY(180deg);
     background-color: black;
+    border-radius: 14px;
+
   }
 
 .list {
