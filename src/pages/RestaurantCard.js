@@ -58,6 +58,7 @@ export default function RestaurantCard({ restaurant}) {
                 ) : (
                 <span >Closed</span>
                 )}
+                <br/>
                 Distance: {calculateDistance()}
                 </p>
                 </div>

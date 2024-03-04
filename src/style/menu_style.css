@@ -17,7 +17,7 @@
 
 .Heading{
 	font-size: 20px;
-	font-family: 'Open Sans';
+	/* font-family: 'Open Sans'; */
 	font-weight: 700;
 	color: #2F3841;
 }
@@ -51,7 +51,7 @@
 	padding-top: 10px;
 	line-height: 10px;
 	font-size: 32px;
-	font-family: 'Open Sans';
+	/* font-family: 'Open Sans'; */
 	font-weight: 800;
 	color: #202020;
 }
@@ -79,7 +79,7 @@
 } */
 .count{
 	font-size: 20px;
-	font-family: 'Open Sans';
+	/* font-family: 'Open Sans'; */
 	font-weight: 600;
 	color: #202020;
 }
@@ -91,14 +91,14 @@
 .amount{
 	padding-top: 20px;
 	font-size: 26px;
-	font-family: 'Open Sans';
+	/* font-family: 'Open Sans'; */
 	font-weight: 800;
 	color: #202020;
 }
 .save{
 	padding-top: 5px;
 	font-size: 14px;
-	font-family: 'Open Sans';
+	/* font-family: 'Open Sans'; */
 	font-weight: 600;
 	color: #1687d9;
 	cursor: pointer;
@@ -106,7 +106,7 @@
 .remove{
 	padding-top: 5px;
 	font-size: 14px;
-	font-family: 'Open Sans';
+	/* font-family: 'Open Sans'; */
 	font-weight: 600;
 	color: #E44C4C;
 	cursor: pointer;
@@ -132,21 +132,21 @@ hr{
 	justify-content: space-between;
 }
 .Subtotal{
-	font-size: 22px;
-	font-family: 'Open Sans';
-	font-weight: 700;
+	/* font-size: 22px; */
+	/* font-family: 'Open Sans'; */
+	/* font-weight: 700; */
 	color: #202020;
 }
 .items{
 	font-size: 16px;
-	font-family: 'Open Sans';
+	/* font-family: 'Open Sans'; */
 	font-weight: 500;
 	color: #909090;
 	line-height: 10px;
 }
 .total-amount{
 	font-size: 36px;
-	font-family: 'Open Sans';
+	/* font-family: 'Open Sans'; */
 	font-weight: 900;
 	color: #202020;
 }
@@ -159,7 +159,7 @@ hr{
 	border-radius: 20px;
 	cursor: pointer;
 	font-size: 16px;
-	font-family: 'Open Sans';
+	/* font-family: 'Open Sans'; */
 	font-weight: 600;
 	color: #202020;
 }

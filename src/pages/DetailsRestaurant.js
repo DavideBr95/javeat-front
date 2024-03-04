@@ -3,9 +3,12 @@ import { currentUser } from '../App';
 import { atom, useAtom } from 'jotai';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlassLocation, faPhone, faClock } from '@fortawesome/free-solid-svg-icons';
-import "../style/menu_style.css"
+import "../style/menu_style.css";
+import { Link } from 'react-router-dom';
+
 
 export default function DetailsRestaurant() {
   const [restaurant, setRestaurants] = useState({});
@@ -14,6 +17,7 @@ export default function DetailsRestaurant() {
   const [counts, setCounts] = useState({});
   const [prices, setPrices] = useState({});
   const [subtotal, setSubtotal] = useState(0);
+  const navigate = useNavigate();
 
   let { id } = useParams();
 
@@ -24,7 +28,7 @@ export default function DetailsRestaurant() {
         getDishes(response.data.menu.id);
       })
       .catch((error) => {
-        console.error("Errore durante il recupero dei dati dei ristoranti:", error);
+        console.error("Error retrieving restaurant data:", error);
       });
   }, [id]);
 
@@ -42,7 +46,7 @@ export default function DetailsRestaurant() {
         setPrices(initialPrices);
       })
       .catch((error) => {
-        console.error("Errore durante il recupero dei dati dei ristoranti:", error);
+        console.error("Error retrieving dishes data:", error);
       });
   }
 
@@ -58,6 +62,18 @@ export default function DetailsRestaurant() {
       ...prevCounts,
       [id]: prevCounts[id] - 1
     }));
+  }
+
+  function removeAll() {
+    const resetCounts = {};
+    Object.keys(counts).forEach(id => {
+      resetCounts[id] = 0;
+    });
+    setCounts(resetCounts);
+  }
+
+  function handleCheckout() {
+    navigate('/add-delivery');
   }
 
   useEffect(() => {
@@ -86,14 +102,14 @@ export default function DetailsRestaurant() {
           </div>
           <div class="CartContainer">
             <div class="Header">
-              <h3 class="Heading">Our menu</h3>
-              <h5 class="Action">Remove all</h5>
+              <h2 class="Heading">Our menu</h2>
+              <button className="btn btn-danger mt-2" onClick={removeAll}>Remove all</button>
             </div>
             {dishes.map(dish =>
               <div class="Cart-Items" key={dish.id}>
                 <div class="about">
-                  <h5 class="title">{dish.name}</h5>
-                  <p class="price">Price: {dish.price}</p>
+                  <span ><strong>{dish.name}</strong></span>
+                  <p class="price">Price: {dish.price} €</p>
                 </div>
                 <div class="counter">
                   <div class="btn" onClick={() => increment(dish.id)}>+</div>
@@ -109,12 +125,15 @@ export default function DetailsRestaurant() {
                   <div class="Subtotal">Sub-Total</div>
                 
                 </div>
-                <div class="total-amount">{subtotal}</div>
+                <div class="total-amount">{subtotal} €</div>
               </div>
-              <button class="button">Checkout</button></div>
+              <button className="button" onClick={handleCheckout}>BUY</button>
+              </div>
+
           </div>
         </div>
       </div>
     </>
   );
 }
+

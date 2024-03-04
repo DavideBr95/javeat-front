@@ -8,6 +8,10 @@ import { atom } from 'jotai';
 import DetailsRestaurant from './pages/DetailsRestaurant';
 import RestaurantCard from './pages/FilterRestaurantsPage'; 
 import background from "./background/home-slide-bg-2.jpg";
+import AddDeliveryPage from './pages/AddDeliveryPage'; 
+import gsap from 'gsap';
+
+
 // import "./style2.css";
 
 const loggedUserBase = atom(localStorage.getItem("logged") ?JSON.parse(localStorage.getItem("logged")):null);
@@ -42,8 +46,7 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/all-restaurants" element={<RestaurantCard />} />
         <Route path="/restaurants/:id" element={<DetailsRestaurant />} />
-        {/* <Route path="/restaurant/:id" element={<FilterRestaurantsPage />} /> */}
-        {/* <Route path="/restaurant/:id" element={<AddDelivery />} /> */}
+        <Route path="/add-delivery" element={<AddDeliveryPage />} />
 
 
 

@@ -73,4 +73,5 @@
   backdrop-filter: blur(10px); */
   background-color: #000000ed;
   border: none !important;
+  transform: rotate(0deg) !important;
 }
