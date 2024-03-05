@@ -5,12 +5,8 @@ import { faArrowTurnUp } from '@fortawesome/free-solid-svg-icons';
 import { useAtom } from "jotai";
 import { loggedUser } from '../App';
 import background from "../background/home.jpg";
-import map from "../background/map with dots.jpg";
-
-   
-
-
-
+import MapPage from './MapPage';
+import style from "../style/style.css"
 
 
 function HomePage() {
@@ -18,10 +14,8 @@ function HomePage() {
 
   return (
   <>
-  <div className='container d-flex justify-content-evenly'>
-    <div className="card text-bg-dark " >
-      <img src={background} alt="immagine di benvenuto" /> 
-      <div className="card-img-overlay">
+  <div className='welcome d-flex justify-content-evenly'>
+    <div className="card-img-overlay">
         <div  className="text-end">
                   {
                   userIn    
@@ -37,13 +31,10 @@ function HomePage() {
                   </> 
                   }
                   </div>
-    
-      </div>
-      <img src={map} alt="immagine di benvenuto" /> 
-
+    <img className="homepage-img" src={background} /> 
     </div>
-
-</div>
+    <div><MapPage/></div>
+  </div>
   </>
   );
 }

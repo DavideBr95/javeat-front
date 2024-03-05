@@ -10,9 +10,9 @@ import { useLocation } from 'react-router-dom';
 
 
 export default function ConfirmationPage(){
-  const [userIn, setUser] = useAtom(loggedUser);
+  const [userIn] = useAtom(loggedUser);
   const [dishes, setDishes] = useState([]);
-  const [subTotal, setSubTotal] = useAtom(subTotalGlobal); 
+  const [subTotal] = useAtom(subTotalGlobal); 
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const deliveryTime = queryParams.get('deliveryTime');
@@ -22,7 +22,10 @@ export default function ConfirmationPage(){
 <>
     <div className="bg d-flex justify-content-around align-items-center">
       <div className="ms-card" >
-        <h2 className="card__msg">Order completed successfully</h2>
+        <h1>Summary</h1>
+        <div class="alert alert-success" role="alert">
+          Order completed successfully!
+        </div>
         <div className="card__body">
         <div className="card__submsg">
             <h5>Your preferences:</h5>

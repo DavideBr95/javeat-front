@@ -4,6 +4,7 @@ import Navbar from './navbar/Navbar';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage'; 
+import MapPage from './pages/MapPage'
 import { atom } from 'jotai';
 import DetailsRestaurant from './pages/DetailsRestaurant';
 import RestaurantCard from './pages/FilterRestaurantsPage'; 
@@ -44,6 +45,7 @@ function App() {
       <Navbar/>
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/map" element={<MapPage />} />
         <Route path="/users/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/all-restaurants" element={<RestaurantCard />} />
