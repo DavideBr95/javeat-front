@@ -14,27 +14,32 @@ function HomePage() {
 
   return (
   <>
-  <div className='welcome d-flex justify-content-evenly'>
-    <div className="card-img-overlay">
-        <div  className="text-end">
-                  {
-                  userIn    
-                  ?
-                  <>
-                   <h5>Welcome to Baldur's Gate on-line food delivery </h5>
-                    
-                  </> 
-                  :  
-                  <>
-                   <h5 >Please Login or Register <FontAwesomeIcon icon={faArrowTurnUp} /></h5>
+  <div className='welcome'>
+    <div className='d-flex justify-content-evenly'>
+      
+    <div  className="text-end">
+              {
+              userIn    
+              ?
+              <>
+                <h5>Welcome to Baldur's Gate on-line food delivery </h5>
+                
+              </> 
+              :  
+              <>
+                <h5 >Please Login or Register <FontAwesomeIcon icon={faArrowTurnUp} /></h5>
 
-                  </> 
-                  }
-                  </div>
+              </> 
+              }
+    </div>
     <img className="homepage-img" src={background} /> 
     </div>
-    <div><MapPage/></div>
+    </div>
+    <div className="container-mappa-cartesiana">
+      <div><MapPage/>
+    </div>
   </div>
+ 
   </>
   );
 }

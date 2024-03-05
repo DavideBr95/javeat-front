@@ -13,8 +13,7 @@ export default function FilterRestaurantsPage() {
   const [availableType, setAvailableType] = useState([]);
   const [filterDist, setFilterDist] = useState("");
   const [user, setUser] = useAtom(loggedUser); // utilizza la posizione dell'utente loggato
-  // const [user, setUser] = useState({ positionX: 500, positionY: 500 }); // Simula la posizione dell'utente
-
+ 
 
   useEffect(() => {
     axios.get("/restaurants")

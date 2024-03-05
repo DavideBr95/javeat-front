@@ -6,6 +6,7 @@ import styles from '../style/map.module.css'; // Importa lo stile CSS
 export default function MapPage() {
     const [userIn, setUser] = useAtom(loggedUser);
     const [restaurant, setRestaurants] = useState({});
+    
 
 
 
