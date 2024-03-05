@@ -14,10 +14,9 @@ import ConfirmationPage from './pages/ConfirmationPage';
 
 
 
-// import "./style2.css";
+
 
 const loggedUserBase = atom(localStorage.getItem("logged") ?JSON.parse(localStorage.getItem("logged")):null);
-export const currentUser = atom();
 
 
 
@@ -45,7 +44,7 @@ function App() {
       <Navbar/>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/map" element={<MapPage />} />
+        <Route path="/restaurant/map/:id" element={<MapPage />} />
         <Route path="/users/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/all-restaurants" element={<RestaurantCard />} />

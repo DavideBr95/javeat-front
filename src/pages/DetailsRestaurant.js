@@ -14,7 +14,6 @@ export const subTotalGlobal = atom(0);
 export default function DetailsRestaurant() {
   const [restaurant, setRestaurants] = useState({});
   const [dishes, setDishes] = useState([]);
-  const [user] = useAtom(currentUser);
   const [counts, setCounts] = useState({});
   const [prices, setPrices] = useState({});
   const [subtotal, setSubtotal] = useState(0);

@@ -1,14 +1,30 @@
-import { loggedUser } from '../App';
+import { currentUser, loggedUser } from '../App';
 import { atom, useAtom } from 'jotai';
 import React, { useEffect, useState } from 'react';
-import styles from '../style/map.module.css'; // Importa lo stile CSS
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
+
+
+
 
 export default function MapPage() {
     const [userIn, setUser] = useAtom(loggedUser);
     const [restaurant, setRestaurants] = useState({});
-    
 
+    let { id } = useParams();
 
+    useEffect(() => {
+   
+          axios.get(`/restaurants/map/${userIn.id}`)
+            .then(response => {
+              setRestaurants(response.data);
+              console.log("Response:", response.data); // Log the response data
+            })
+            .catch(error => {
+              console.error("Error retrieving restaurant data:", error);
+            });
+      
+    }, [id, loggedUser]);
 
 useEffect(() => {
     const canvas = document.getElementById('canvas');
