@@ -1,12 +1,12 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
-import background from "../background/home.jpg";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import { faArrowTurnUp } from '@fortawesome/free-solid-svg-icons'; 
 import { useAtom } from "jotai";
 import { loggedUser } from '../App';
-
-
+import background from "../background/home.jpg";
+import MapPage from './MapPage';
+import homepage_style from "../style/homepage_style.css"
 
 
 function HomePage() {
@@ -14,30 +14,30 @@ function HomePage() {
 
   return (
   <>
-  <div className='container'>
-    <div class="card text-bg-dark mt-3"style={{width: "80%", margin: "0 auto"}}>
-      <img src={background} alt="immagine di benvenuto" /> 
-      <div class="card-img-overlay">
-        <div  class="text-end">
-                  {
-                  userIn    
-                  ?
-                  <>
-                   <h5>Welcome to Baldur's Gate on-line food delivery </h5>
-                    
-                  </> 
-                  :  
-                  <>
-                   <h5 >Please Login or Register <FontAwesomeIcon icon={faArrowTurnUp} /></h5>
-
-                  </> 
-                  }
-                  </div>
-    
-      </div>
+   <div className="welcome">
+  <div className="row">
+    <div className="col-4">
+      {userIn ? (
+        <>
+          <h5>Welcome to Baldur's Gate on-line food delivery </h5>
+        </> 
+      ) : (
+        <>
+          <h5>Please Login or Register <FontAwesomeIcon icon={faArrowTurnUp} /></h5>
+        </> 
+      )}
     </div>
-
+    <div className="col-4">
+      <img className="homepage-img" src={background} /> 
+    </div>
+    <div className="col-4">
+      <MapPage/>
+    </div>
+  </div>
 </div>
+
+ 
+ 
   </>
   );
 }
