@@ -15,7 +15,6 @@ function HomePage() {
   return (
   <>
   <div className='welcome d-flex justify-content-evenly'>
-    <div className="card-img-overlay">
         <div  className="text-end">
                   {
                   userIn    
@@ -31,10 +30,8 @@ function HomePage() {
                   </> 
                   }
                   </div>
-    <img className="homepage-img" src={background} /> 
     </div>
     <div><MapPage/></div>
-  </div>
   </>
   );
 }
