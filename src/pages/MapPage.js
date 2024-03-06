@@ -1,31 +1,12 @@
-import { currentUser, loggedUser } from '../App';
-import { atom, useAtom } from 'jotai';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useAtom } from 'jotai';
 import { loggedUser } from '../App';
-import styles from '../style/map.module.css';
 import { useNavigate } from 'react-router-dom';
 
 export default function MapPage() {
-    const [userIn, setUser] = useAtom(loggedUser);
-    const [restaurant, setRestaurants] = useState({});
-
-    let { id } = useParams();
-
-    useEffect(() => {
-   
-          axios.get(`/restaurants/map/${userIn.id}`)
-            .then(response => {
-              setRestaurants(response.data);
-              console.log("Response:", response.data); // Log the response data
-            })
-            .catch(error => {
-              console.error("Error retrieving restaurant data:", error);
-            });
-      
-    }, [id, loggedUser]);
-    
+    const [user, setUser] = useAtom(loggedUser);
+    const [restaurants, setRestaurants] = useState([]);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -127,7 +108,7 @@ export default function MapPage() {
     return (
         <>
             <h1>Flatlandia</h1>
-            <canvas id="canvas" className={styles.canvas} width={1000} height={1000}></canvas>
+            <canvas id="canvas" width={1000} height={1000}></canvas>
         </>
     );
 }
