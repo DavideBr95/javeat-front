@@ -4,8 +4,8 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import { faArrowTurnUp } from '@fortawesome/free-solid-svg-icons'; 
 import { useAtom } from "jotai";
 import { loggedUser } from '../App';
-import background from "../background/home.jpg";
 import MapPage from './MapPage';
+import background from "../background/home.jpg";
 import homepage_style from "../style/homepage_style.css"
 
 
@@ -14,27 +14,28 @@ function HomePage() {
 
   return (
   <>
-   <div className="welcome">
-  <div className="row">
-    <div className="col-4">
+  
+  <div className="ms_homepage">
+    <div className="">
       {userIn ? (
         <>
-          <h5>Welcome to Baldur's Gate on-line food delivery </h5>
+        <div className="ms_heading">
+          <h1>Welcome</h1><br/>
+          <h2>to Baldur's Gate</h2><br/>
+          <h2>on-line food delivery</h2>
+        </div>
         </> 
       ) : (
         <>
-          <h5>Please Login or Register <FontAwesomeIcon icon={faArrowTurnUp} /></h5>
+          <h5 >Please Login or Register <FontAwesomeIcon icon={faArrowTurnUp} /></h5>
         </> 
       )}
     </div>
-    <div className="col-4">
-      <img className="homepage-img" src={background} /> 
-    </div>
-    <div className="col-4">
-      <MapPage/>
+ 
+    <div className="">
+    {userIn && <MapPage/>}
     </div>
   </div>
-</div>
 
  
  

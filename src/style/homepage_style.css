@@ -1,3 +1,16 @@
-/* .welcome {
+.ms_homepage {
+    margin: 5%;
     display: flex;
-} */
+    
+}
+
+.ms_heading{
+    font-size:30px;
+    text-align:left; 
+    line-height:1.5em; 
+    font-family:"Playfair Display", serif; 
+    text-transform:uppercase;
+    letter-spacing: 2px; 
+    color:#f8c10f;
+    justify-content: space-evenly;
+}

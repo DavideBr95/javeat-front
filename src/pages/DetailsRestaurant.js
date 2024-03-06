@@ -34,12 +34,12 @@ export default function DetailsRestaurant() {
   }, [id]);
 
   function getDishes(id) {
-    axios.get(`/dishes/${id}`)
+    axios.get(`/menus/${id}`)
       .then((response) => {
-        setDishes(response.data);
+        setDishes(response.data.dishes);
         const initialCounts = {};
         const initialPrices = {};
-        response.data.forEach(dish => {
+        response.data.dishes.forEach(dish => {
           initialCounts[dish.id] = 0;
           initialPrices[dish.id] = dish.price; // assuming the price property exists in your dish object
         });
