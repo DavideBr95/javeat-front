@@ -6,7 +6,7 @@ import { useAtom } from "jotai";
 import { loggedUser } from '../App';
 import background from "../background/home.jpg";
 import MapPage from './MapPage';
-import style from "../style/style.css"
+import homepage_style from "../style/homepage_style.css"
 
 
 function HomePage() {
@@ -14,24 +14,30 @@ function HomePage() {
 
   return (
   <>
-  <div className='welcome d-flex justify-content-evenly'>
-        <div  className="text-end">
-                  {
-                  userIn    
-                  ?
-                  <>
-                   <h5>Welcome to Baldur's Gate on-line food delivery </h5>
-                    
-                  </> 
-                  :  
-                  <>
-                   <h5 >Please Login or Register <FontAwesomeIcon icon={faArrowTurnUp} /></h5>
-
-                  </> 
-                  }
-                  </div>
+   <div className="welcome">
+  <div className="row">
+    <div className="col-4">
+      {userIn ? (
+        <>
+          <h5>Welcome to Baldur's Gate on-line food delivery </h5>
+        </> 
+      ) : (
+        <>
+          <h5>Please Login or Register <FontAwesomeIcon icon={faArrowTurnUp} /></h5>
+        </> 
+      )}
     </div>
-    <div><MapPage/></div>
+    <div className="col-4">
+      <img className="homepage-img" src={background} /> 
+    </div>
+    <div className="col-4">
+      <MapPage/>
+    </div>
+  </div>
+</div>
+
+ 
+ 
   </>
   );
 }
