@@ -25,8 +25,7 @@ export default function MapPage() {
             });
       
     }, [id, loggedUser]);
-    const [user, setUser] = useAtom(loggedUser);
-    const [restaurants, setRestaurants] = useState([]);
+    
     const navigate = useNavigate();
 
     useEffect(() => {
