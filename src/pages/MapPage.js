@@ -94,7 +94,7 @@ export default function MapPage() {
                 drawGrid();
 
                 if (user && user.positionX !== undefined && user.positionY !== undefined) {
-                    drawPoint(user.positionX, user.positionY, 'blue', 'sono qui', true);
+                    drawPoint(user.positionX, user.positionY, 'yellow', 'TU SEI QUI', true);
                 }
 
                 restaurants.forEach(restaurant => {
