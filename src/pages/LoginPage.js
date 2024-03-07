@@ -3,6 +3,8 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useAtom } from 'jotai';
 import { loggedUser } from '../App';
+import Navbar from '../navbar/Navbar';
+
 
 function LoginPage() {
   const [user, setUser] = useAtom(loggedUser);
@@ -33,6 +35,7 @@ function LoginPage() {
 
   return (
     <>
+    <Navbar/>
   <div className="container mt-3" data-bs-theme="dark">
   <div className="card border-dark " style={{backgroundColor: "#000000ed"}}>
   <div className="card-body text-center mb-2">

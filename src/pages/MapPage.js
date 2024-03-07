@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useAtom } from 'jotai';
 import { loggedUser } from '../App';
 import { useNavigate } from 'react-router-dom';
+import baldurs_map from "../background/baldurs_map.png"
 
 export default function MapPage() {
     const [user, setUser] = useAtom(loggedUser);
@@ -35,7 +36,7 @@ export default function MapPage() {
                 ctx.lineTo(width / 2, height);
                 ctx.moveTo(0, height / 2);
                 ctx.lineTo(width, height / 2);
-                ctx.strokeStyle = "#000";
+                ctx.strokeStyle = "rgba(0, 0, 0, 0)";
                 ctx.stroke();
             }
 
@@ -45,12 +46,14 @@ export default function MapPage() {
                     ctx.beginPath();
                     ctx.moveTo(x + width / 2, 0);
                     ctx.lineTo(x + width / 2, height);
+                    ctx.strokeStyle = "rgba(0, 0, 0, 0)";
                     ctx.stroke();
                 }
                 for (let y = -height / 2; y <= height / 2; y += gridSize) {
                     ctx.beginPath();
                     ctx.moveTo(0, y + height / 2);
                     ctx.lineTo(width, y + height / 2);
+                    ctx.strokeStyle = "rgba(0, 0, 0, 0)";
                     ctx.stroke();
                 }
             }
@@ -96,7 +99,8 @@ export default function MapPage() {
 
                 restaurants.forEach(restaurant => {
                     const distance = Math.sqrt(Math.pow(restaurant.positionX - user.positionX, 2) + Math.pow(restaurant.positionY - user.positionY, 2));
-                    const restaurantColor = distance <= 20 ? 'green' : 'red'; // Verde se entro 20 unità, altrimenti rosso
+                    const restaurantColor = distance <= 20 ? 'green' : 'white'; // Verde se entro 20 unità, altrimenti rosso
+                    ctx.font = '16px Post Antiqua';
                     drawPoint(restaurant.positionX, restaurant.positionY, restaurantColor, restaurant.name, false);
                 });
             }
@@ -107,8 +111,8 @@ export default function MapPage() {
 
     return (
         <>
-            <h1>Flatlandia</h1>
-            <canvas id="canvas" width={1000} height={1000}></canvas>
+        
+            <canvas id="canvas" width={800} height={700}></canvas>
         </>
     );
 }

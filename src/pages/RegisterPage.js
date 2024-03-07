@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Navbar from '../navbar/Navbar';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { loggedUser } from "../App";
@@ -139,6 +140,7 @@ export default function RegisterPage() {
 
     return (
         <>
+        <Navbar/>
             <div className="container mt-3" data-bs-theme="dark">
                 <div className="card border-dark" style={{ backgroundColor: "#000000ed" }}>
                     <div className="card-body text-center">

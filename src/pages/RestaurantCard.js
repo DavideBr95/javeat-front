@@ -1,5 +1,4 @@
 import { useAtom } from "jotai";
-import { useState, useEffect } from 'react';
 import { loggedUser } from '../App';
 import { Link } from "react-router-dom";
 import imageRestaurant from "../background/baldurs-gate-3-elfsong-room-barkeep.avif";
@@ -41,11 +40,12 @@ export default function RestaurantCard({ restaurant}) {
   
   return (
     <>
+    
     <div className="col-6 col-sm-4 col-lg-3">
         <div className="flip-card">
           <div className="flip-card-inner">
             <div className="flip-card-front ">
-              <div style={{ backgroundImage: `url(${imageRestaurant})`, height: "100%", width: "100%", backgroundSize: "cover", marginBottom: "10px", borderRadius: "14px"}}  alt="..." />
+              <div style={{ backgroundImage: `url(${restaurant.imgUrl})`, height: "100%", width: "100%", backgroundSize: "cover", marginBottom: "10px", borderRadius: "14px"}}  alt="..." />
             </div>
             <div className="flip-card-back">
               <div className="card-body p-3">

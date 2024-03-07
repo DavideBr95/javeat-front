@@ -7,6 +7,8 @@ import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons'; 
 import { faMagnifyingGlassLocation, faPhone, faClock } from '@fortawesome/free-solid-svg-icons';
+import Navbar from '../navbar/Navbar';
+
 import "../style/menu_style.css";
 
 export const subTotalGlobal = atom(0);
@@ -90,6 +92,7 @@ export default function DetailsRestaurant() {
 
   return (
     <>
+    <Navbar/>
       <div className="card mt-3" style={{ margin: "0 auto", width: "80%" }}>
         <div className='d-flex '>
           <div className="card-body text-light">

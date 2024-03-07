@@ -1,6 +1,5 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Navbar from './navbar/Navbar';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage'; 
@@ -8,7 +7,7 @@ import MapPage from './pages/MapPage'
 import { atom } from 'jotai';
 import DetailsRestaurant from './pages/DetailsRestaurant';
 import RestaurantCard from './pages/FilterRestaurantsPage'; 
-import background from "./background/home-slide-bg-2.jpg";
+import background from "./background/background_homepage.jpg";
 import AddDeliveryPage from './pages/AddDeliveryPage'; 
 import ConfirmationPage from './pages/ConfirmationPage'; 
 
@@ -38,10 +37,10 @@ function App() {
       width: "100%",
       height: "100%",
       minHeight: "100vh",
-      backgroundSize: "cover"}}>
+     }}>
     
     <BrowserRouter>
-      <Navbar/>
+      
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/restaurant/map/:id" element={<MapPage />} />

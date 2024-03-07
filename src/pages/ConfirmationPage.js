@@ -7,6 +7,7 @@ import { subTotalGlobal } from './DetailsRestaurant';
 import { useAtom } from "jotai";
 import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import Navbar from '../navbar/Navbar';
 
 
 export default function ConfirmationPage(){
@@ -20,8 +21,9 @@ export default function ConfirmationPage(){
 
   return(
 <>
-    <div className="bg d-flex justify-content-around align-items-center">
-      <div className="ms-card" >
+<Navbar/>
+    <div className="bg d-flex justify-content-around align-items-center" >
+      <div className="ms-card"  data-bs-theme="dark" >
         <h1>Summary</h1>
         <div class="alert alert-success" role="alert">
           Order completed successfully!

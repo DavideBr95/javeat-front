@@ -6,6 +6,8 @@ import RestaurantCard from './RestaurantCard';
 import "../style/style.css";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import { faTriangleExclamation } from '@fortawesome/free-solid-svg-icons';
+import Navbar from "../navbar/Navbar"
+
 
 export default function FilterRestaurantsPage() {
   const [restaurants, setRestaurants] = useState([]);
@@ -50,6 +52,7 @@ export default function FilterRestaurantsPage() {
   
   return (
     <>
+    <Navbar/>
       <div className="container mt-3"> 
         <div className="card p-3" data-bs-theme="dark">
           <form onSubmit={(e) => e.preventDefault()}>

@@ -5,6 +5,8 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import { faMoneyBill1 } from '@fortawesome/free-solid-svg-icons'; 
 import { faCreditCard } from '@fortawesome/free-solid-svg-icons'; 
 import { Link, useNavigate } from 'react-router-dom';
+import Navbar from '../navbar/Navbar';
+
 
  
 export default function AddDeliveryPage() {
@@ -22,6 +24,7 @@ export default function AddDeliveryPage() {
 
   return (
       <>
+      <Navbar/>
           <div className="slide-container">
               <div className="wrapper">
                   <div className="clash-card barbarian">

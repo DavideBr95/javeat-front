@@ -1,5 +1,8 @@
+@import url(https://db.onlinewebfonts.com/c/8486c9c92e81479c0091eccd59950936?family=Post+Antiqua);
+
 .App {
   text-align: center;
+  font-family: 'Post Antiqua';
 }
 
 .App-logo {
